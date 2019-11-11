@@ -47,6 +47,56 @@ const Adagrams = {
       }
     };
   return true
+  },
+
+  scoreWord(word){
+    const input = word.toUpperCase()
+    const input_array = input.split('')
+    const n = input.length
+    let score = 0
+    for (let i = 0; i < n; i++){
+      let letter = input_array[i]
+      if (alphabet.includes(letter)){
+        score += letterValue[letter]
+      }
+    }
+    if (n>6 && n < 11){
+      score += 8
+    }
+    return score
+  },
+
+  highestScoreFrom(words){
+    const n = words.length
+    let winner = {
+      word: '',
+      score: 0
+    }
+
+    for (let i = 0; i < n; i++){
+      if (this.scoreWord(words[i]) > winner.score){
+        winner = {
+          word: words[i],
+          score: this.scoreWord(words[i])
+        }
+      //address the tiebreaker
+      }else if(this.scoreWord(words[i]) === winner.score) {
+        if (winner.word.length === 10){
+          winner = winner
+        }else if (words[i].length === 10){
+          winner = {
+            word: words[i],
+            score: this.scoreWord(words[i])
+          }
+        }else if (words[i].length < winner.word.length){
+          winner = {
+            word: words[i],
+            score: this.scoreWord(words[i])
+          }
+        }
+      }
+    }
+  return winner
   }
 }
 
