@@ -17,8 +17,6 @@ alphabet.forEach( function(letter){
   }
 });
 
-
-
 const Adagrams = {
   drawLetters() {
     let hand = []
@@ -99,7 +97,6 @@ const Adagrams = {
   return winner
   }
 }
-
 
 // Do not remove this line or your tests will break!
 export default Adagrams;
