@@ -17,8 +17,8 @@ alphabet.forEach( function(letter){
   }
 });
 
-const Adagrams = {
-  drawLetters() {
+class Adagrams  {
+  static drawLetters() {
     let hand = []
     let letterPoolCopy = [...letterPool]
     for (let i = 0; i < 10; i++){
@@ -28,9 +28,9 @@ const Adagrams = {
       letterPoolCopy.splice(i,1)
     };
     return hand
-  },
+  }
 
-  usesAvailableLetters(input, lettersInHand){
+  static usesAvailableLetters(input, lettersInHand){
     const input_array = input.split('')
     const n = input.length
     let lettersInHandCopy = [...lettersInHand]
@@ -45,9 +45,9 @@ const Adagrams = {
       }
     };
   return true
-  },
+  }
 
-  scoreWord(word){
+  static scoreWord(word){
     const input = word.toUpperCase()
     const input_array = input.split('')
     const n = input.length
@@ -62,9 +62,9 @@ const Adagrams = {
       score += 8
     }
     return score
-  },
+  }
 
-  highestScoreFrom(words){
+  static highestScoreFrom(words){
     const n = words.length
     let winner = {
       word: '',
