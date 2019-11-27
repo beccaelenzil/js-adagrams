@@ -31,11 +31,11 @@ class Adagrams  {
   }
 
   static usesAvailableLetters(input, lettersInHand){
-    const input_array = input.split('')
+    const inputArray = input.split('')
     const n = input.length
     let lettersInHandCopy = [...lettersInHand]
     for (let i = 0; i < n; i++){
-      let letter = input_array[i]
+      let letter = inputArray[i]
       if (lettersInHandCopy.includes(letter)){
         let j = lettersInHandCopy.indexOf(letter)
         lettersInHandCopy.splice(j, 1)
