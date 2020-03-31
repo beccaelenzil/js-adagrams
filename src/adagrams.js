@@ -13,20 +13,20 @@ const alphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('')
 let letterPool = []
 alphabet.forEach( function(letter){
   for (let i = 0; i < letterCount[letter]; i++){
-    letterPool.push(letter)
+    letterPool.push(letter);
   }
 });
 
 class Adagrams  {
   static drawLetters() {
-    let hand = []
-    let letterPoolCopy = [...letterPool]
+    let hand = [];
+    let letterPoolCopy = [...letterPool];
     for (let i = 0; i < 10; i++){
-      let n = letterPoolCopy.length
-      let i = Math.floor(n*Math.random()) 
-      hand.push(letterPoolCopy[i])
-      letterPoolCopy.splice(i,1)
-    };
+      let n = letterPoolCopy.length;
+      let i = Math.floor(n*Math.random()) ;
+      hand.push(letterPoolCopy[i]);
+      letterPoolCopy.splice(i,1);
+    }
     return hand
   }
 
@@ -48,24 +48,24 @@ class Adagrams  {
   }
 
   static scoreWord(word){
-    const input = word.toUpperCase()
-    const input_array = input.split('')
-    const n = input.length
-    let score = 0
+    const input = word.toUpperCase();
+    const inputArray = input.split('');
+    const n = input.length;
+    let score = 0;
     for (let i = 0; i < n; i++){
-      let letter = input_array[i]
+      let letter = inputArray[i];
       if (alphabet.includes(letter)){
-        score += letterValue[letter]
+        score += letterValue[letter];
       }
     }
     if (n>6 && n < 11){
-      score += 8
+      score += 8;
     }
-    return score
+    return score;
   }
 
   static highestScoreFrom(words){
-    const n = words.length
+    const n = words.length;
     let winner = {
       word: '',
       score: 0
@@ -75,7 +75,7 @@ class Adagrams  {
       if (this.scoreWord(words[i]) > winner.score){
         winner = {
           word: words[i],
-          score: this.scoreWord(words[i])
+          score: this.scoreWord(words[i]);
         }
       //address the tiebreaker
       }else if(this.scoreWord(words[i]) === winner.score) {
